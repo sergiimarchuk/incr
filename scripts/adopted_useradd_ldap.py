@@ -9,10 +9,10 @@ ADMIN_DN = 'cn=admin,dc=myorg,dc=local'
 ADMIN_PASSWORD = 'admin'
 
 # New user info
-USER_UID = 'e220314_b1'
-USER_CN = 'e220314_b1'  # common name, can be full name or username
-USER_GIVENNAME = 'Sergii'  # example first name
-USER_SN = 'Ivanov'         # example surname
+USER_UID = 'brooks'
+USER_CN = 'brooks'  # common name, can be full name or username
+USER_GIVENNAME = 'brooks'  # example first name
+USER_SN = 'brooks'         # example surname
 USER_EMAIL = 'sergii@example.com'
 USER_PASSWORD = '1qaz1'
 USER_DN = f'uid={USER_UID},ou=users,dc=myorg,dc=local'
