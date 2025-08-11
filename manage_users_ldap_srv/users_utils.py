@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.insert(0, '/opt/dev-py/TimeTracking-dev/libs')  # make sure this path is correct
+sys.path.insert(0, '/opt/dev-py/incredible/libs')  # make sure this path is correct
 
 
 LDIF_TEMPLATE = """dn: uid={login},ou=users,dc=myorg,dc=local
@@ -41,10 +41,10 @@ def add_user_to_ldap(login, name, email, password):
     user_ldif, fix_ldif = create_ldif_files(login, name, email, password)
 
     cmds = [
-        f"docker cp {user_ldif} openldap:/{login}.ldif",
-        f"docker exec openldap ldapadd -x -D 'cn=admin,dc=MyOrg,dc=local' -w admin -f /{login}.ldif",
-        f"docker cp {fix_ldif} openldap:/{login}_fix.ldif",
-        f"docker exec openldap ldapmodify -x -D 'cn=admin,dc=MyOrg,dc=local' -w admin -f /{login}_fix.ldif"
+        f"docker cp {user_ldif} openldap-dev-demo:/{login}.ldif",
+        f"docker exec openldap-dev-demo ldapadd -x -D 'cn=admin,dc=MyOrg,dc=local' -w admin -f /{login}.ldif",
+        f"docker cp {fix_ldif} openldap-dev-demo:/{login}_fix.ldif",
+        f"docker exec openldap-dev-demo ldapmodify -x -D 'cn=admin,dc=MyOrg,dc=local' -w admin -f /{login}_fix.ldif"
     ]
 
     for cmd in cmds:

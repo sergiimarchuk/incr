@@ -4,7 +4,7 @@ sys.path.insert(0, '/opt/dev-py/TimeTracking-dev/libs')  # make sure this path i
 from ldap3 import Server, Connection, ALL
 
 def authenticate(username, password):
-    server = Server('localhost', port=389, get_info=ALL)
+    server = Server('localhost', port=8389, get_info=ALL)
     user_dn = f"uid={username},ou=users,dc=myorg,dc=local"
     try:
         conn = Connection(server, user=user_dn, password=password)
