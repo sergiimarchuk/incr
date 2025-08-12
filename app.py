@@ -3,21 +3,17 @@ import sys
 sys.path.insert(0, '/opt/dev-py/incredible/libs')
 
 from flask import Flask, render_template, flash, redirect, url_for, session
-from datetime import datetime
+
 from flask_wtf.csrf import CSRFProtect
 
 from scripts.auth_checker import authenticate as ldap_authenticate
-from scripts.current_month_year import get_current_month_year
+
 from scripts.uid_openldap_getting import authenticate_and_get_info as ldap_uid
-
-from scripts.forms import AutoUploadForm
-
 
 from scripts.forms import LoginForm, WorkHoursForm, AutoUploadForm
 
-from scripts.forms import LoginForm, WorkHoursForm
-from scripts.forms import WorkHoursForm
-
+from datetime import datetime
+from scripts.current_month_year import get_current_month_year
 
 
 app = Flask(__name__)

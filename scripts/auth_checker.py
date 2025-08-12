@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '/opt/dev-py/TimeTracking-dev/libs')  # make sure this path is correct
+sys.path.insert(0, '/opt/dev-py/incredible/libs')  # make sure this path is correct
 
 from ldap3 import Server, Connection, ALL
 

@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '/opt/dev-py/TimeTracking-dev/libs')
+sys.path.insert(0, '/opt/dev-py/incredible/libs')
 from ldap3 import Server, Connection, ALL
 
 LDAP_SERVER = 'localhost'
@@ -7,7 +7,7 @@ BASE_DN = 'ou=users,dc=myorg,dc=local'
 
 def authenticate_and_get_info(username, password):
     user_dn = f"uid={username},{BASE_DN}"
-    server = Server(LDAP_SERVER, port=389, get_info=ALL)
+    server = Server(LDAP_SERVER, port=8389, get_info=ALL)
 
     try:
         # Bind using the user's credentials
@@ -52,3 +52,50 @@ if __name__ == '__main__':
         sys.exit(0)
     else:
         sys.exit(1)
+
+
+"""
+
+## 🔐 `authenticate_and_get_info(username, password)`
+
+**Main function. Steps:**
+
+- **Builds full user DN:**  
+  → `uid=<username>,<BASE_DN>`
+
+- **Creates LDAP connection** (`Server` + `Connection`)  
+  → Connects on port `8389`, binds using the given credentials
+
+- **Attempts bind (auth):**  
+  → If invalid DN or password — raises `Exception`
+
+- **Searches user’s own DN**  
+  → Filter: `(objectClass=*)`, returns `cn`, `mail`, `entryUUID`
+
+- **Returns user info as a `dict`**  
+  → If no entry found — logs error, returns `False`
+
+---
+
+## 🚀 `if __name__ == '__main__':`
+
+**CLI entry point:**
+
+- Takes `username` and `password` from command-line args
+- Calls `authenticate_and_get_info`
+- If successful — prints `uid`, `cn`, `email`, `entryUUID`
+- If failed — exits with `1` (can be used in shell scripting)
+
+---
+
+## 🧯 Debug Tips — Where Things Might Break
+
+| Section           | What to check                                                |
+|-------------------|--------------------------------------------------------------|
+| `auto_bind=True`  | Invalid DN or wrong password → triggers `Exception`          |
+| `conn.search(...)`| User exists but no attributes? → Check schema or LDAP ACLs   |
+| `entry.mail`      | Optional field — script safely handles if it's missing       |
+| Port `8389`       | Ensure LDAP server is actually listening on this port        |
+
+
+"""
