@@ -88,3 +88,34 @@ log/
 # Ignore LDAP config and data
 ldap-demo/ldap_config/
 ldap-demo/ldap_data/
+
+libs/ldap3/utils/
+
+#
+# Bytecode & caches
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtualenvs or installed libs
+venv/
+libs/ldap3/**/__pycache__/
+
+# Secrets & envs
+.env
+.env.*
+secrets.json
+ldap_credentials.txt
+
+# Logs & temp
+*.log
+*.tmp
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
