@@ -119,3 +119,6 @@ ldap_credentials.txt
 .DS_Store
 Thumbs.db
 
+
+__pycache__/
+*.pyc
