@@ -7,6 +7,7 @@
 
   <form action="{{ url_for('auto_form') }}" method="post" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
+    <li class="nav-item"><a class="nav-link custom-purple" href="{{ url_for('list_files') }}">My Uploads</a></li>
 
     <div class="mb-3">
       {{ form.plate_number.label(class="form-label") }}
