@@ -65,11 +65,12 @@ def login():
 
                 month_name, year, calendar_weeks, month_num = get_current_month_year()
                 return render_template(
-                    'success.html',
-                    user=username, month=month_name,
-                    month_num=month_num, year=year,
-                    calendar_weeks=calendar_weeks, uid=uid
+                    'routing_list.html',
+                    title="Login Successful",
+                    message=f"Welcome, {username}! You have successfully logged in.",
+                    redirect_url=url_for('calendar')  # or any other route
                 )
+
 
         flash("Something went wrong, please check login or password.")
         return redirect(url_for('login'))
