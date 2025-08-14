@@ -1,3 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Home | My Flask App{% endblock %}
+{% block title %}Home | My Flask App{% endblock %}                    
+
+
+
+{% block content %}
+    <h2>My List</h2>
+    <ol>
+        <li>Item One</li>
+        <li>Item Two</li>
+        <li>Item Three</li>
+        <li class="nav-item"><a class="nav-link custom-purple" href="{{ url_for('list_files') }}">My Uploads</a></li>
+    </ol>
+{% endblock %}
