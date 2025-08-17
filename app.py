@@ -176,7 +176,7 @@ def calendar():
 from flask import request
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = '/opt/dev-py/TimeTracking-dev/uploads'  # Make sure this directory exists
+UPLOAD_FOLDER = '/opt/dev-py/incredible/uploads'  # Make sure this directory exists
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'pdf', 'txt'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
